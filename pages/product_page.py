@@ -19,11 +19,6 @@ class ProductPage(BasePage):
         link = self.browser.find_element(*ProductPageLocators.Add_BASKET)
         link.click()
 
-
-
-
-
-
-
-
+    def should_have_the_same_price(self):
+        assert self.browser.find_element(*ProductPageLocators.PRICE_BOOK).text == self.browser.find_element(*ProductPageLocators.RIGHT_AMOUNT).text, "Prices are different"
 
