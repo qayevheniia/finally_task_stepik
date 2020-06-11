@@ -6,6 +6,7 @@ import math
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from .locators import BasePageLocators
 
 
 class BasePage():
@@ -20,10 +21,10 @@ class BasePage():
 
 
 
-   # def __init__(self, browser, url, timeout=10):
-    #    self.browser = browser
-     #   self.url = url
-    #    self.browser.implicitly_wait(timeout)
+    def __init__(self, browser, url, timeout=10):
+        self.browser = browser
+        self.url = url
+        self.browser.implicitly_wait(timeout)
 
     def is_element_present(self, how, what):
         try:
@@ -67,3 +68,12 @@ class BasePage():
 
         return True
 #метод для проверки, что  элемент исчезает, следует воспользоваться явным ожиданием вместе с функцией until_not, в зависимости от того, какой результат мы ожидаем:
+
+
+    def go_to_login_page(self):
+        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
