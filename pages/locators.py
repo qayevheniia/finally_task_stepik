@@ -14,5 +14,6 @@ class ProductPageLocators():
     Name_BOOK = (By.CSS_SELECTOR, ' div.col-sm-6.product_main > h1')
     PRICE_BOOK = (By.CSS_SELECTOR, 'p.price_color')
     RIGHT_AMOUNT = (By.CSS_SELECTOR, '.alertinner > p > strong')
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, '.alertinner strong')
 
 
