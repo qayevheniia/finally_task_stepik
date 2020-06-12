@@ -26,6 +26,7 @@ class BasePage():
         self.url = url
         self.browser.implicitly_wait(timeout)
 
+
     def is_element_present(self, how, what):
         try:
             self.browser.find_element(how, what)
@@ -82,4 +83,7 @@ class BasePage():
         link = self.browser.find_element(*BasePageLocators.GO_BASKET)
         link.click()
 
-
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"
+    #проверка того, что пользователь зарегистрировался
